@@ -1,3 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
 ADD_DEFINITIONS("-Wall -std=c++0x")
-add_executable (stlDemo vectorsort.cpp) 
+add_executable (vectorDemo vectorsort.cpp) 
+add_executable (listDemo lists.cpp) 
+add_executable (setDemo sets.cpp) 

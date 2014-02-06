@@ -83,7 +83,7 @@ void vectorDemo()
 
 
   cout << "The size of the vector is: " << v.size() << endl
-       << "maximum number of elements: " << v.max_size() << endl
+       << "maximum number of elements:                       " << v.max_size() << endl
        << "allocated storage capacity is: " << v.capacity() << endl;
 
 
@@ -115,6 +115,52 @@ void vectorDemo()
   sort( v.begin(), v.end(), greater<int>() );
   cout << "The vector ordered by greater<int>:" << endl;
   printContainer0x11< vector<int> >( v ); 
+
+
+
+
+
+  // Invalid iterators:
+  // TODO
+  vector<int>::iterator i1 = find( v.begin(), v.end(),  13 );
+  cout << "i1 content: " << *i1 << endl;
+  v.insert( i1, 666 );
+  cout << "i1 content: " << *i1 << endl;
+  v.erase( v.begin() );
+  v.erase( v.begin() );
+  cout << "i1 content: " << *i1 << endl;
+
+  vector<int> w;
+  vector<int>::iterator pos = w.begin();
+  // reverse( ++pos, w.end() ); // this would segfault
+
+  // copy( v.begin(), v.end(), w.begin()); // this would segfault too. solution:
+  w.resize( v.size() );
+  copy( v.begin(), v.end(), w.begin()); 
+
+  cout << "Vector w:" << endl;
+  printContainer0x11< vector<int> >( w ); 
+
+
+
+  // remove, erase
+  // TODO
+
+
+  // references in containers
+  // vector<int&> intRefVector;  // error: forming pointer to reference type ‘int&’
+  // T should be CopyAssignable. See: http://en.cppreference.com/w/cpp/concept/CopyAssignable
+  // t = v after this: The value of t is equivalent to the value of v. The value of v is unchanged.
+  // References are not reassignable
+  // See example:
+  int number = 2;
+  int anotherNumber = 7;
+  int& nr1 = number;
+  cout << "number: " << number <<  " anotherNumber: " << anotherNumber << " nr1: " << nr1 << endl;
+  nr1 = anotherNumber;;
+  anotherNumber = 1;
+  // Note that nr1 still refers for number
+  cout << "number: " << number <<  " anotherNumber: " << anotherNumber << " nr1: " << nr1 << endl;
 
 }
 
