@@ -52,9 +52,6 @@ void listDemo()
        << "maximum number of elements in the list:          " << l.max_size() << endl;
 
 
-  // Iterator validity
-  // TODO
-
 
   /* FORWARD LIST */
 

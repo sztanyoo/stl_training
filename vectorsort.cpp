@@ -121,7 +121,6 @@ void vectorDemo()
 
 
   // Invalid iterators:
-  // TODO
   vector<int>::iterator i1 = find( v.begin(), v.end(),  13 );
   cout << "i1 content: " << *i1 << endl;
   v.insert( i1, 666 );
@@ -144,8 +143,14 @@ void vectorDemo()
 
 
   // remove, erase
-  // TODO
+  remove( w.begin(), w.end(), 13 );
+  cout << "W after 13 removed\n";
+  printContainer0x11< vector<int> >( w ); 
 
+  // Solution:
+  //w.erase( remove( w.begin(), w.end(), 13 ), w.end() );
+  cout << "W after 13 removed properly\n";
+  printContainer0x11< vector<int> >( w ); 
 
   // references in containers
   // vector<int&> intRefVector;  // error: forming pointer to reference type ‘int&’
